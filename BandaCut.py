@@ -9,13 +9,9 @@ st.title("BandaCut")
 n = st.number_input("Longitud de perfiles en bruto:", min_value=0, step=1, value=0, format="%d")
 
 def process(df: pd.DataFrame, n: int):
-    """
-    Placeholder processing function.
-    Replace body with your optimization logic. It receives a DataFrame
-    with columns ['Unidades','Longitud'] and the integer n.
-    """
+    """Placeholder processing function — replace with your optimization logic."""
     st.write("Procesando...", "Filas:", len(df))
-    # example: return a simple result
+    # example: simple calculation (remove or replace)
     df = df.copy()
     df["Longitud"] = pd.to_numeric(df["Longitud"], errors="coerce")
     result = df["Longitud"].dropna() * int(n)
@@ -39,7 +35,6 @@ with tab1:
                 df_tab1 = pd.read_csv(uploaded)
             else:
                 df_tab1 = pd.read_excel(uploaded)
-            st.write("Vista previa (archivo):", df_tab1.head())
         except Exception as e:
             st.error(f"Error leyendo el archivo: {e}")
             df_tab1 = None
@@ -48,7 +43,6 @@ with tab1:
         if df_tab1 is None:
             st.error("No hay datos cargados en este tab.")
         else:
-            # validate columns then call process
             needed = ["Unidades", "Longitud"]
             cols = {c.lower(): c for c in df_tab1.columns}
             if all(k.lower() in cols for k in needed):
@@ -70,8 +64,6 @@ with tab2:
             except Exception as e:
                 st.error(f"Error en el formato de datos: {e}")
                 df_tab2 = None
-    if df_tab2 is not None:
-        st.write("Vista previa (texto):", df_tab2.head())
 
     if st.button("Procesar datos", key="process_tab2"):
         if df_tab2 is None:
@@ -96,7 +88,6 @@ with tab3:
         key="editor_tab3"
     )
     df_tab3 = st.session_state.editable_df
-    st.write("Vista previa (editor):", df_tab3.head())
 
     if st.button("Procesar datos", key="process_tab3"):
         if df_tab3 is None or df_tab3.empty:
