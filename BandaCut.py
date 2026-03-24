@@ -15,8 +15,7 @@ st.markdown("### Listado de despiece")
 tab1, tab2, tab3 = st.tabs(["Subir un archivo", "Introducir texto", "Editar datos en tabla"])
 
 with tab1:
-    txt = st.text_area("Sube un archivo de Excel o CSV. La tabla debe tener las columnas: Unidades, Longitud.")
-    uploaded = st.file_uploader("Subir un archivo de Excel o CSV", type=["csv", "xlsx", "xls"])
+    uploaded = st.file_uploader("Sube un archivo de Excel o CSV. La tabla debe tener las columnas: Unidades, Longitud.", type=["csv", "xlsx", "xls"])
     df = None
     if uploaded is not None:
         try:
@@ -60,17 +59,17 @@ if 'df' in locals() and df is not None:
     if all(k.lower() in cols for k in needed):
         df = df.rename(columns={cols[k.lower()]: k for k in needed})
         # try convert Length to numeric
-        df["Length"] = pd.to_numeric(df["Length"], errors="coerce")
-        invalid = df["Length"].isna()
+        df["Longitud"] = pd.to_numeric(df["Longitud"], errors="coerce")
+        invalid = df["Longitud"].isna()
         if invalid.any():
-            st.warning(f"{invalid.sum()} row(s) have non-numeric Length and were set to NaN.")
-        st.write("Data preview:", df)
+            st.warning(f"{invalid.sum()} fila(s) tienen valores no númericos, se convierten a NaN.")
+        st.write("Datos para optimización:", df)
         # Example: use the integer 'n' and the table in a simple calculation
-        st.markdown("### Example result")
+        st.markdown("### Resultado:")
         # simple demo: multiply lengths by n (skip NaN)
-        result = df["Length"].dropna() * int(n)
+        result = df["Longitud"].dropna() * int(n)
         st.write(result.to_frame(name="Length_times_n"))
     else:
-        st.error(f"Data must include columns: {', '.join(needed)}. Found: {', '.join(df.columns)}")
+        st.error(f"Los datos deben incluir las columnas: {', '.join(needed)}. Found: {', '.join(df.columns)}")
 else:
-    st.info("Provide data via upload, paste, or the editable table.")
+    st.info("Introduce los datos mediante un archivo, texto o tabla.")
