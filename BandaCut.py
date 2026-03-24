@@ -2,20 +2,21 @@ import streamlit as st
 import pandas as pd
 from io import StringIO
 
-st.set_page_config(page_title="BandaCut")
+st.set_page_config(page_title="BandaCut - Optimización de material 1D")
 
 st.title("BandaCut")
 
 # Integer input
-n = st.number_input("Enter an integer", min_value=0, step=1, value=0, format="%d")
+n = st.number_input("Longitud de perfiles en bruto:", min_value=0, step=1, value=0, format="%d")
 
-st.markdown("### Data input (Length, Units)")
+st.markdown("### Listado de despiece")
 
 # Option tabs: upload CSV/Excel, paste text, or edit table
-tab1, tab2, tab3 = st.tabs(["Upload file", "Paste text", "Edit table"])
+tab1, tab2, tab3 = st.tabs(["Subir un archivo", "Introducir texto", "Editar datos en tabla"])
 
 with tab1:
-    uploaded = st.file_uploader("Upload CSV or Excel", type=["csv", "xlsx", "xls"])
+    txt = st.text_area("Sube un archivo de Excel o CSV. La tabla debe tener las columnas: Unidades, Longitud.")
+    uploaded = st.file_uploader("Subir un archivo de Excel o CSV", type=["csv", "xlsx", "xls"])
     df = None
     if uploaded is not None:
         try:
@@ -24,10 +25,10 @@ with tab1:
             else:
                 df = pd.read_excel(uploaded)
         except Exception as e:
-            st.error(f"Error reading file: {e}")
+            st.error(f"Error leyendo el archivo: {e}")
 
 with tab2:
-    txt = st.text_area("Paste rows (comma- or tab-separated). Example:\nLength,Units\n12,cm\n5,in")
+    txt = st.text_area("Introduce datos. Cada línea debe tener este formato: Unidades, Longitud")
     if txt.strip():
         try:
             # try comma first, then tab
@@ -36,13 +37,13 @@ with tab2:
             try:
                 df = pd.read_csv(StringIO(txt), sep="\t")
             except Exception as e:
-                st.error(f"Unable to parse pasted data: {e}")
+                st.error(f"Error en el formato de datos: {e}")
                 df = None
 
 with tab3:
     # start with empty table template
     if "editable_df" not in st.session_state:
-        st.session_state.editable_df = pd.DataFrame({"Length": [], "Units": []})
+        st.session_state.editable_df = pd.DataFrame({"Unidades": [], "Longitud": []})
     st.session_state.editable_df = st.data_editor(
         st.session_state.editable_df,
         num_rows="dynamic",
@@ -53,7 +54,7 @@ with tab3:
 # Normalize/validate df if present
 if 'df' in locals() and df is not None:
     # Ensure required columns exist
-    needed = ["Length", "Units"]
+    needed = ["Unidades", "Longitud"]
     # allow case-insensitive match
     cols = {c.lower(): c for c in df.columns}
     if all(k.lower() in cols for k in needed):
