@@ -10,8 +10,7 @@ n = st.number_input("Longitud de perfiles en bruto:", min_value=0, step=1, value
 
 def process(df: pd.DataFrame, n: int):
     """Placeholder processing function — replace with your optimization logic."""
-    st.write("Procesando...", "Filas:", len(df))
-    # example: simple calculation (remove or replace)
+    st.write("Procesando... filas:", len(df))
     df = df.copy()
     df["Longitud"] = pd.to_numeric(df["Longitud"], errors="coerce")
     result = df["Longitud"].dropna() * int(n)
@@ -39,7 +38,7 @@ with tab1:
             st.error(f"Error leyendo el archivo: {e}")
             df_tab1 = None
 
-    if st.button("Procesar datos", key="process_tab1"):
+    if st.button("Procesar CSV", key="process_csv"):
         if df_tab1 is None:
             st.error("No hay datos cargados en este tab.")
         else:
@@ -51,23 +50,35 @@ with tab1:
             else:
                 st.error(f"Los datos deben incluir las columnas: {', '.join(needed)}. Encontrado: {', '.join(df_tab1.columns)}")
 
-# ---- TAB 2 : Paste text ----
+# ---- TAB 2 : Paste text (no header expected) ----
 with tab2:
-    txt = st.text_area("Introduce datos. Cada línea debe tener este formato: Unidades, Longitud", key="text_tab2")
+    txt = st.text_area(
+        "Introduce datos. Cada línea: Unidades,Longitud (sin cabecera). Separador: coma o tab.",
+        key="text_tab2"
+    )
     df_tab2 = None
     if txt.strip():
         try:
-            df_tab2 = pd.read_csv(StringIO(txt))
+            # try comma-separated without header
+            df_tab2 = pd.read_csv(StringIO(txt), header=None)
         except Exception:
             try:
-                df_tab2 = pd.read_csv(StringIO(txt), sep="\t")
+                # try tab-separated without header
+                df_tab2 = pd.read_csv(StringIO(txt), sep="\t", header=None)
             except Exception as e:
                 st.error(f"Error en el formato de datos: {e}")
                 df_tab2 = None
 
-    if st.button("Procesar datos", key="process_tab2"):
+    if df_tab2 is not None:
+        if df_tab2.shape[1] == 2:
+            df_tab2.columns = ["Unidades", "Longitud"]
+        else:
+            st.error("Los datos pegados deben tener exactamente 2 columnas por fila (Unidades, Longitud).")
+            df_tab2 = None
+
+    if st.button("Procesar desde texto", key="process_text"):
         if df_tab2 is None:
-            st.error("No hay datos introducidos en este tab.")
+            st.error("No hay datos válidos en este tab.")
         else:
             needed = ["Unidades", "Longitud"]
             cols = {c.lower(): c for c in df_tab2.columns}
@@ -89,7 +100,7 @@ with tab3:
     )
     df_tab3 = st.session_state.editable_df
 
-    if st.button("Procesar datos", key="process_tab3"):
+    if st.button("Procesar desde tabla", key="process_table"):
         if df_tab3 is None or df_tab3.empty:
             st.error("No hay datos en la tabla editable.")
         else:
