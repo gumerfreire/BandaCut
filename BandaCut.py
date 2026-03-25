@@ -54,11 +54,11 @@ class csp_1D:
             waste_per_stock.append(remaining_length)
         return cutting_configurations, used_stock, waste_per_stock
 
-st.title("Corte 1D — Greedy Solver (multi-sheet XLSX)")
+st.title("BandaCut")
 
-raw_length = st.number_input("Longitud de la barra (numérica)", min_value=0.0, value=600.0, step=1.0, format="%.2f")
+raw_length = st.number_input("Longitud de barras en bruto:", min_value=0.0, value=600.0, step=1.0, format="%.2f")
 
-st.write("Suba un archivo .xlsx/.xls con hojas que contengan columnas exactas: **Longitud** y **Unidades** (ambas obligatorias).")
+st.write("Sube un archivo .xlsx/.xls con hojas que contengan columnas: **Longitud** y **Unidades**.")
 uploaded = st.file_uploader("Subir archivo .xlsx/.xls", type=["xlsx", "xls"])
 
 if uploaded is not None:
@@ -71,7 +71,7 @@ if uploaded is not None:
         st.stop()
 
     st.subheader("Hojas encontradas")
-    st.write(sheet_names)
+    st.write("Hojas encontradas: " + ", ".join(sheet_names))
 
     # Prepare storage for reports and per-sheet results
     reports = {}  # sheet_name -> report_text
@@ -119,31 +119,24 @@ if uploaded is not None:
             continue
 
         # Display brief results
-        st.write(f"Longitud barra: **{results['raw_length']}**")
         st.write(f"Piezas de barra usadas: **{results['stock_used']}**")
         st.write(f"Desperdicio total: **{results['total_waste']}**")
         st.write(f"Aprovechamiento: **{results['utilization_pct']} %**")
-        st.write("Configuraciones de corte (primeras 5 barras):")
-        for i, (cfg, w) in enumerate(zip(results["configurations"], results["waste_per_stock"]), start=1):
-            if i > 5:
-                st.write("...") 
-                break
-            st.write(f"Barra {i}: cortes = {cfg} — desperdicio = {w}")
-
+ 
         # Build plain-text report for this sheet
         lines = []
-        lines.append(f"SHEET: {sheet}")
+        lines.append(f"TABLA: {sheet}")
         lines.append("=" * (7 + len(sheet)))
         lines.append("")
-        lines.append("INPUT DATA")
+        lines.append("DATOS DE ENTRADAD")
         lines.append("-----------")
-        lines.append(f"Longitud (barra): {results['raw_length']}")
+        lines.append(f"Longitud de barra en bruto: {results['raw_length']}")
         lines.append("")
         lines.append("Piezas solicitadas (Longitud x Unidades):")
         for length, units in zip(parsed_df["Longitud"].tolist(), parsed_df["Unidades"].tolist()):
             lines.append(f"  - {length} x {units}")
         lines.append("")
-        lines.append("RESULTS")
+        lines.append("RESULTADO DE OPTIMIZACIÓN")
         lines.append("-------")
         lines.append(f"Piezas de barra usadas: {results['stock_used']}")
         lines.append(f"Desperdicio total: {results['total_waste']}")
