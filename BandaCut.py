@@ -69,14 +69,14 @@ if uploaded is not None:
     except Exception as e:
         st.error(f"Error al leer el archivo Excel: {e}")
         st.stop()
-
+    st.markdown(f"---")
     st.subheader("Hojas encontradas")
     st.write("Hojas encontradas: " + ", ".join(sheet_names))
 
     # Prepare storage for reports and per-sheet results
     reports = {}  # sheet_name -> report_text
     per_sheet_results = {}  # sheet_name -> results dict
-
+    st.markdown(f"---")
     st.subheader("Informes de corte")
     # Process each sheet
     for sheet in sheet_names:
