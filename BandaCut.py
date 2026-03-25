@@ -80,11 +80,12 @@ if uploaded is not None:
     st.subheader("Informes de corte")
     # Process each sheet
     for sheet in sheet_names:
-        st.markdown(f"---\n**Hoja:** {sheet}")
+        st.markdown(f"**Hoja:** {sheet}")
         try:
             df_sheet = xls.parse(sheet_name=sheet)
         except Exception as e:
             st.error(f"Error al leer la hoja '{sheet}': {e}")
+            st.markdown(f"---")
             continue
 
         # Check required columns
@@ -92,6 +93,7 @@ if uploaded is not None:
         missing = [c for c in required_cols if c not in df_sheet.columns]
         if missing:
             st.error(f"Hoja '{sheet}': faltan columnas obligatorias: {', '.join(missing)}. Se omite esta hoja.")
+            st.markdown(f"---")
             continue
 
         # Parse and validate
@@ -102,9 +104,11 @@ if uploaded is not None:
 
         if parsed_df["Longitud"].isna().any():
             st.error(f"Hoja '{sheet}': la columna 'Longitud' contiene valores no numéricos o vacíos. Se omite esta hoja.")
+            st.markdown(f"---")
             continue
         if parsed_df["Unidades"].isna().any():
             st.error(f"Hoja '{sheet}': la columna 'Unidades' contiene valores no numéricos o vacíos. Se omite esta hoja.")
+            st.markdown(f"---")
             continue
 
         parsed_df["Unidades"] = parsed_df["Unidades"].astype(int)
@@ -123,6 +127,7 @@ if uploaded is not None:
         st.write(f"Piezas de barra usadas: **{results['stock_used']}**")
         st.write(f"Desperdicio total: **{results['total_waste']}**")
         st.write(f"Aprovechamiento: **{results['utilization_pct']} %**")
+        st.markdown(f"---")
  
         # Build plain-text report for this sheet
         lines = []
