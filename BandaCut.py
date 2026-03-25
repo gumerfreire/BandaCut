@@ -58,7 +58,7 @@ st.title("BandaCut")
 
 raw_length = st.number_input("Longitud de barras en bruto:", min_value=0.0, value=600.0, step=1.0, format="%.2f")
 
-st.write("Sube un archivo .xlsx/.xls con hojas que contengan columnas: **Longitud** y **Unidades**.")
+st.write("Sube un archivo .xlsx/.xls. El archivo puede tener una o varias hojas, cada una con una tabla para optimizar. Cada hoja debe contener una tabla con las columnas: **Longitud** y **Unidades**.")
 uploaded = st.file_uploader("Subir archivo .xlsx/.xls", type=["xlsx", "xls"])
 
 if uploaded is not None:
@@ -77,6 +77,7 @@ if uploaded is not None:
     reports = {}  # sheet_name -> report_text
     per_sheet_results = {}  # sheet_name -> results dict
 
+    st.subheader("Informes de corte")
     # Process each sheet
     for sheet in sheet_names:
         st.markdown(f"---\n**Hoja:** {sheet}")
@@ -128,7 +129,7 @@ if uploaded is not None:
         lines.append(f"TABLA: {sheet}")
         lines.append("=" * (7 + len(sheet)))
         lines.append("")
-        lines.append("DATOS DE ENTRADAD")
+        lines.append("DATOS DE ENTRADA")
         lines.append("-----------")
         lines.append(f"Longitud de barra en bruto: {results['raw_length']}")
         lines.append("")
@@ -151,10 +152,10 @@ if uploaded is not None:
         reports[sheet] = report_text
 
         # Show report preview and individual download button
-        with st.expander(f"Ver reporte de '{sheet}'"):
+        with st.expander(f"Ver informe de '{sheet}'"):
             st.text(report_text)
         st.download_button(
-            label=f"Descargar reporte: {sheet}.txt",
+            label=f"Descargar informe: {sheet}.txt",
             data=report_text,
             file_name=f"{sheet}.txt",
             mime="text/plain",
@@ -174,12 +175,12 @@ if uploaded is not None:
                     zf.writestr(filename, txt)
             zip_buffer.seek(0)
             st.download_button(
-                label="Descargar todos los reportes (.zip)",
+                label="Descargar todos los informes (.zip)",
                 data=zip_buffer,
-                file_name="reportes_corte.zip",
+                file_name="informes_corte.zip",
                 mime="application/zip"
             )
         else:
-            st.info("Se generó 1 reporte. Use el botón de descarga individual arriba.")
+            st.info("Se generó un informe. Usa el botón de descarga individual arriba.")
 else:
-    st.info("Esperando archivo .xlsx/.xls. Asegúrese de que cada hoja tenga las columnas 'Longitud' y 'Unidades'.")
+    st.info("Esperando archivo .xlsx/.xls. Asegúrate de que cada hoja tenga las columnas 'Longitud' y 'Unidades'.")
