@@ -80,7 +80,7 @@ if uploaded is not None:
     st.subheader("Informes de corte")
     # Process each sheet
     for sheet in sheet_names:
-        st.markdown(f"**Hoja:** {sheet}")
+        st.markdown(f"**Hoja: {sheet}**")
         try:
             df_sheet = xls.parse(sheet_name=sheet)
         except Exception as e:
@@ -127,7 +127,6 @@ if uploaded is not None:
         st.write(f"Piezas de barra usadas: **{results['stock_used']}**")
         st.write(f"Desperdicio total: **{results['total_waste']}**")
         st.write(f"Aprovechamiento: **{results['utilization_pct']} %**")
-        st.markdown(f"---")
  
         # Build plain-text report for this sheet
         lines = []
@@ -157,7 +156,7 @@ if uploaded is not None:
         reports[sheet] = report_text
 
         # Show report preview and individual download button
-        with st.expander(f"Ver informe de '{sheet}'"):
+        with st.expander(f"Ver informe de {sheet}"):
             st.text(report_text)
         st.download_button(
             label=f"Descargar informe: {sheet}.txt",
