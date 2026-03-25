@@ -57,9 +57,9 @@ class csp_1D:
 st.title("BandaCut")
 st.write("Optimización de corte de perfiles 1D. Esta herramienta utiliza un algoritmo tipo greedy básico. Introduce la medida de la barra en bruto y los datos de corte para optimizar. Las unidades son definidas por el usuario, deben coincidir las unidades de bara en bruto y cortes.")
 
-st.write("Sube un archivo .xlsx/.xls. El archivo puede tener una o varias hojas, cada una con una tabla para optimizar. Cada hoja debe contener una tabla con las columnas: **Longitud** y **Unidades**.")
+st.write("Sube un archivo .xlsx/.xls. El archivo puede tener una o varias hojas, cada una con un listado de cortes de perfil para optimizar. Cada hoja debe contener una tabla con las columnas: **Longitud** y **Unidades**.")
 
-raw_length = st.number_input("Longitud de barras en bruto:", min_value=0.0, value=600.0, step=1.0, format="%.2f")
+raw_length = st.number_input("Longitud de barras en bruto:", min_value=1, value=600, step=1, format="%d")
 
 uploaded = st.file_uploader("Subir archivo .xlsx/.xls", type=["xlsx", "xls"])
 
