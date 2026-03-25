@@ -165,10 +165,11 @@ if uploaded is not None:
             mime="text/plain",
             key=f"dl_{sheet}"
         )
-
+    
     # If we have multiple reports, offer a ZIP download
     if reports:
         if len(reports) > 1:
+            st.markdown(f"---")
             # create an in-memory ZIP
             zip_buffer = io.BytesIO()
             with zipfile.ZipFile(zip_buffer, "w", zipfile.ZIP_DEFLATED) as zf:
