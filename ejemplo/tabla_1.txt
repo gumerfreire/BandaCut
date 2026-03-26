@@ -1,0 +1,196 @@
+HOJA: tabla_1
+==============
+
+DATOS DE ENTRADA
+-----------
+Longitud de barra en bruto: 600
+
+Piezas solicitadas (Longitud x Unidades):
+  - 355 x 8
+  - 210 x 2
+  - 255 x 12
+  - 150 x 34
+  - 99 x 6
+  - 455 x 2
+  - 165 x 5
+  - 210 x 24
+  - 59 x 26
+  - 224 x 10
+  - 450 x 8
+  - 550 x 110
+  - 101 x 51
+  - 105 x 6
+
+RESULTADO DE OPTIMIZACIÓN
+-------
+Piezas de barra usadas: 166
+Desperdicio total: 7156
+Aprovechamiento: 92.8 %
+
+Configuraciones de corte por barra:
+  Barra 1: 550  —  Desperdicio: 50
+  Barra 2: 550  —  Desperdicio: 50
+  Barra 3: 550  —  Desperdicio: 50
+  Barra 4: 550  —  Desperdicio: 50
+  Barra 5: 550  —  Desperdicio: 50
+  Barra 6: 550  —  Desperdicio: 50
+  Barra 7: 550  —  Desperdicio: 50
+  Barra 8: 550  —  Desperdicio: 50
+  Barra 9: 550  —  Desperdicio: 50
+  Barra 10: 550  —  Desperdicio: 50
+  Barra 11: 550  —  Desperdicio: 50
+  Barra 12: 550  —  Desperdicio: 50
+  Barra 13: 550  —  Desperdicio: 50
+  Barra 14: 550  —  Desperdicio: 50
+  Barra 15: 550  —  Desperdicio: 50
+  Barra 16: 550  —  Desperdicio: 50
+  Barra 17: 550  —  Desperdicio: 50
+  Barra 18: 550  —  Desperdicio: 50
+  Barra 19: 550  —  Desperdicio: 50
+  Barra 20: 550  —  Desperdicio: 50
+  Barra 21: 550  —  Desperdicio: 50
+  Barra 22: 550  —  Desperdicio: 50
+  Barra 23: 550  —  Desperdicio: 50
+  Barra 24: 550  —  Desperdicio: 50
+  Barra 25: 550  —  Desperdicio: 50
+  Barra 26: 550  —  Desperdicio: 50
+  Barra 27: 550  —  Desperdicio: 50
+  Barra 28: 550  —  Desperdicio: 50
+  Barra 29: 550  —  Desperdicio: 50
+  Barra 30: 550  —  Desperdicio: 50
+  Barra 31: 550  —  Desperdicio: 50
+  Barra 32: 550  —  Desperdicio: 50
+  Barra 33: 550  —  Desperdicio: 50
+  Barra 34: 550  —  Desperdicio: 50
+  Barra 35: 550  —  Desperdicio: 50
+  Barra 36: 550  —  Desperdicio: 50
+  Barra 37: 550  —  Desperdicio: 50
+  Barra 38: 550  —  Desperdicio: 50
+  Barra 39: 550  —  Desperdicio: 50
+  Barra 40: 550  —  Desperdicio: 50
+  Barra 41: 550  —  Desperdicio: 50
+  Barra 42: 550  —  Desperdicio: 50
+  Barra 43: 550  —  Desperdicio: 50
+  Barra 44: 550  —  Desperdicio: 50
+  Barra 45: 550  —  Desperdicio: 50
+  Barra 46: 550  —  Desperdicio: 50
+  Barra 47: 550  —  Desperdicio: 50
+  Barra 48: 550  —  Desperdicio: 50
+  Barra 49: 550  —  Desperdicio: 50
+  Barra 50: 550  —  Desperdicio: 50
+  Barra 51: 550  —  Desperdicio: 50
+  Barra 52: 550  —  Desperdicio: 50
+  Barra 53: 550  —  Desperdicio: 50
+  Barra 54: 550  —  Desperdicio: 50
+  Barra 55: 550  —  Desperdicio: 50
+  Barra 56: 550  —  Desperdicio: 50
+  Barra 57: 550  —  Desperdicio: 50
+  Barra 58: 550  —  Desperdicio: 50
+  Barra 59: 550  —  Desperdicio: 50
+  Barra 60: 550  —  Desperdicio: 50
+  Barra 61: 550  —  Desperdicio: 50
+  Barra 62: 550  —  Desperdicio: 50
+  Barra 63: 550  —  Desperdicio: 50
+  Barra 64: 550  —  Desperdicio: 50
+  Barra 65: 550  —  Desperdicio: 50
+  Barra 66: 550  —  Desperdicio: 50
+  Barra 67: 550  —  Desperdicio: 50
+  Barra 68: 550  —  Desperdicio: 50
+  Barra 69: 550  —  Desperdicio: 50
+  Barra 70: 550  —  Desperdicio: 50
+  Barra 71: 550  —  Desperdicio: 50
+  Barra 72: 550  —  Desperdicio: 50
+  Barra 73: 550  —  Desperdicio: 50
+  Barra 74: 550  —  Desperdicio: 50
+  Barra 75: 550  —  Desperdicio: 50
+  Barra 76: 550  —  Desperdicio: 50
+  Barra 77: 550  —  Desperdicio: 50
+  Barra 78: 550  —  Desperdicio: 50
+  Barra 79: 550  —  Desperdicio: 50
+  Barra 80: 550  —  Desperdicio: 50
+  Barra 81: 550  —  Desperdicio: 50
+  Barra 82: 550  —  Desperdicio: 50
+  Barra 83: 550  —  Desperdicio: 50
+  Barra 84: 550  —  Desperdicio: 50
+  Barra 85: 550  —  Desperdicio: 50
+  Barra 86: 550  —  Desperdicio: 50
+  Barra 87: 550  —  Desperdicio: 50
+  Barra 88: 550  —  Desperdicio: 50
+  Barra 89: 550  —  Desperdicio: 50
+  Barra 90: 550  —  Desperdicio: 50
+  Barra 91: 550  —  Desperdicio: 50
+  Barra 92: 550  —  Desperdicio: 50
+  Barra 93: 550  —  Desperdicio: 50
+  Barra 94: 550  —  Desperdicio: 50
+  Barra 95: 550  —  Desperdicio: 50
+  Barra 96: 550  —  Desperdicio: 50
+  Barra 97: 550  —  Desperdicio: 50
+  Barra 98: 550  —  Desperdicio: 50
+  Barra 99: 550  —  Desperdicio: 50
+  Barra 100: 550  —  Desperdicio: 50
+  Barra 101: 550  —  Desperdicio: 50
+  Barra 102: 550  —  Desperdicio: 50
+  Barra 103: 550  —  Desperdicio: 50
+  Barra 104: 550  —  Desperdicio: 50
+  Barra 105: 550  —  Desperdicio: 50
+  Barra 106: 550  —  Desperdicio: 50
+  Barra 107: 550  —  Desperdicio: 50
+  Barra 108: 550  —  Desperdicio: 50
+  Barra 109: 550  —  Desperdicio: 50
+  Barra 110: 550  —  Desperdicio: 50
+  Barra 111: 455, 105  —  Desperdicio: 40
+  Barra 112: 455, 105  —  Desperdicio: 40
+  Barra 113: 450, 150  —  Desperdicio: 0
+  Barra 114: 450, 150  —  Desperdicio: 0
+  Barra 115: 450, 150  —  Desperdicio: 0
+  Barra 116: 450, 150  —  Desperdicio: 0
+  Barra 117: 450, 150  —  Desperdicio: 0
+  Barra 118: 450, 150  —  Desperdicio: 0
+  Barra 119: 450, 150  —  Desperdicio: 0
+  Barra 120: 450, 150  —  Desperdicio: 0
+  Barra 121: 355, 224  —  Desperdicio: 21
+  Barra 122: 355, 224  —  Desperdicio: 21
+  Barra 123: 355, 224  —  Desperdicio: 21
+  Barra 124: 355, 224  —  Desperdicio: 21
+  Barra 125: 355, 224  —  Desperdicio: 21
+  Barra 126: 355, 224  —  Desperdicio: 21
+  Barra 127: 355, 224  —  Desperdicio: 21
+  Barra 128: 355, 224  —  Desperdicio: 21
+  Barra 129: 255, 255, 59  —  Desperdicio: 31
+  Barra 130: 255, 255, 59  —  Desperdicio: 31
+  Barra 131: 255, 255, 59  —  Desperdicio: 31
+  Barra 132: 255, 255, 59  —  Desperdicio: 31
+  Barra 133: 255, 255, 59  —  Desperdicio: 31
+  Barra 134: 255, 255, 59  —  Desperdicio: 31
+  Barra 135: 224, 224, 150  —  Desperdicio: 2
+  Barra 136: 210, 210, 165  —  Desperdicio: 15
+  Barra 137: 210, 210, 165  —  Desperdicio: 15
+  Barra 138: 210, 210, 165  —  Desperdicio: 15
+  Barra 139: 210, 210, 165  —  Desperdicio: 15
+  Barra 140: 210, 210, 165  —  Desperdicio: 15
+  Barra 141: 210, 210, 150  —  Desperdicio: 30
+  Barra 142: 210, 210, 150  —  Desperdicio: 30
+  Barra 143: 210, 210, 150  —  Desperdicio: 30
+  Barra 144: 210, 210, 150  —  Desperdicio: 30
+  Barra 145: 210, 210, 150  —  Desperdicio: 30
+  Barra 146: 210, 210, 150  —  Desperdicio: 30
+  Barra 147: 210, 210, 150  —  Desperdicio: 30
+  Barra 148: 210, 210, 150  —  Desperdicio: 30
+  Barra 149: 150, 150, 150, 150  —  Desperdicio: 0
+  Barra 150: 150, 150, 150, 150  —  Desperdicio: 0
+  Barra 151: 150, 150, 150, 150  —  Desperdicio: 0
+  Barra 152: 150, 150, 150, 150  —  Desperdicio: 0
+  Barra 153: 150, 105, 105, 105, 105  —  Desperdicio: 30
+  Barra 154: 101, 101, 101, 101, 101, 59  —  Desperdicio: 36
+  Barra 155: 101, 101, 101, 101, 101, 59  —  Desperdicio: 36
+  Barra 156: 101, 101, 101, 101, 101, 59  —  Desperdicio: 36
+  Barra 157: 101, 101, 101, 101, 101, 59  —  Desperdicio: 36
+  Barra 158: 101, 101, 101, 101, 101, 59  —  Desperdicio: 36
+  Barra 159: 101, 101, 101, 101, 101, 59  —  Desperdicio: 36
+  Barra 160: 101, 101, 101, 101, 101, 59  —  Desperdicio: 36
+  Barra 161: 101, 101, 101, 101, 101, 59  —  Desperdicio: 36
+  Barra 162: 101, 101, 101, 101, 101, 59  —  Desperdicio: 36
+  Barra 163: 101, 101, 101, 101, 101, 59  —  Desperdicio: 36
+  Barra 164: 101, 99, 99, 99, 99, 99  —  Desperdicio: 4
+  Barra 165: 99, 59, 59, 59, 59, 59, 59, 59, 59  —  Desperdicio: 29
+  Barra 166: 59, 59  —  Desperdicio: 482

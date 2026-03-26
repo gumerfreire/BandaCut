@@ -1,0 +1,25 @@
+HOJA: tabla_3
+==============
+
+DATOS DE ENTRADA
+-----------
+Longitud de barra en bruto: 600
+
+Piezas solicitadas (Longitud x Unidades):
+  - 210 x 2
+  - 150 x 7
+  - 99 x 6
+  - 165 x 5
+
+RESULTADO DE OPTIMIZACIÓN
+-------
+Piezas de barra usadas: 5
+Desperdicio total: 111
+Aprovechamiento: 96.3 %
+
+Configuraciones de corte por barra:
+  Barra 1: 210, 210, 165  —  Desperdicio: 15
+  Barra 2: 165, 165, 165, 99  —  Desperdicio: 6
+  Barra 3: 165, 150, 150, 99  —  Desperdicio: 36
+  Barra 4: 150, 150, 150, 150  —  Desperdicio: 0
+  Barra 5: 150, 99, 99, 99, 99  —  Desperdicio: 54
