@@ -127,6 +127,11 @@ if uploaded is not None:
             st.error(f"Hoja '{sheet}': la columna 'Unidades' contiene valores no numéricos o vacíos. Se omite esta hoja.")
             st.markdown(f"---")
             continue
+        
+        if parsed_df["Longitud"].max() > raw_length:
+            st.error(f"Hoja '{sheet}': Existen longitudes de corte más grandes que el perfil en bruto. Se omite esta hoja.")
+            st.markdown("---")
+            continue
 
         parsed_df["Unidades"] = parsed_df["Unidades"].astype(int)
 
