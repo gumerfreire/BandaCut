@@ -1,8 +1,3 @@
-import io
-import zipfile
-import streamlit as st
-import pandas as pd
-
 '''
 BANDACUT
 
@@ -15,6 +10,11 @@ una sola operación.
 
 Gumer Freire, 2026
 '''
+
+import io
+import zipfile
+import streamlit as st
+import pandas as pd
 
 class csp_1D:
     '''
